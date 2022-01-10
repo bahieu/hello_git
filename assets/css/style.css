@@ -21,8 +21,17 @@ html {
 #main {
 }
 #header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 46px;
   background-color: black;
+  z-index: 1 ;
+  
+}
+#nav{
+  display: inline-block;
 }
 #nav,
 .subnav {
@@ -45,16 +54,22 @@ html {
   padding: 0 24px;
   display: block;
 }
+#nav li:hover .subnav{
+  display: block;
+}
 #nav .subnav li:hover a,
 #nav > li:hover > a {
   color: black;
   background-color: #ccc;
 }
 #nav .subnav {
-  /* display: none; */
+    display: none; 
+   min-width: 160px;
   position: absolute;
+  top: 100%;
+  left: 0;
   background-color: white;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black ;
 }
 #nav .subnav a {
   color: black;
@@ -65,7 +80,44 @@ html {
   min-height: 500px;
   background-color: #333;
 }
+#nav-arrow-down {
+  font-size: 14px;
+}
+#header .search-btn{
+  float: right;
+  padding: 0 21px;
+
+}
+#header .search-btn:hover{
+  background-color: #f44336;
+  cursor: pointer;
+}
+#header .search-icon{
+  color : white;
+  font-size: 20px;
+  line-height: 46px;
+
+}
 #slider {
+  position: relative;
+  margin-top: 46px;
+  padding-top: 50%;
+  background: url("/hello_git/assets/img/slider/slider1.jpg")  top center  / cover no-repeat;
+}
+#slider .text-content{
+position: absolute;
+bottom: 47px;
+width: 100% ;
+color: white;
+text-align: center;
+}
+#slider .text-heading{
+font-weight: 500;
+font-size: 24px;
+}
+#slider .text-description{
+margin-top: 25px;
+font-size: 15px;
 }
 #content {
 }
