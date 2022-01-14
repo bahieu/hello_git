@@ -69,15 +69,15 @@
         <div class="member-list">
           <div class="member-item">
             <p class="member-name">Name</p>
-            <img src="/hello_git/assets/img/band/mem1.jpg" alt="Name" class="member-img" />
+            <img src="../w3_band/assets/img/band/mem1.jpg" alt="Name" class="member-img" />
           </div>
           <div class="member-item">
             <p class="member-name">Name</p>
-            <img src="/hello_git/assets/img/band/mem1.jpg" alt="Name" class="member-img" />
+            <img src="../w3_band/assets/img/band/mem1.jpg" alt="Name" class="member-img" />
           </div>
           <div class="member-item">
             <p class="member-name">Name</p>
-            <img src="/hello_git/assets/img/band/mem1.jpg" alt="Name" class="member-img" />
+            <img src="../w3_band/assets/img/band/mem1.jpg" alt="Name" class="member-img" />
           </div>
           <div class="clear"></div>
         </div>
@@ -101,7 +101,7 @@
                 <h3 class="place-heading">New York</h3>
                 <p class="place-time">Fri 27 Nov 2016</p>
                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                <a href="#" class="place-buy-btn">Buy Tickets</a>
+                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
               </div>
             </div>
             <div class="place-item">
@@ -110,7 +110,7 @@
                 <h3 class="place-heading">Paris</h3>
                 <p class="place-time">Sat 28 Nov 2016</p>
                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                <a href="#" class="place-buy-btn">Buy Tickets</a>
+                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
               </div>
             </div>
             <div class="place-item">
@@ -119,7 +119,7 @@
                 <h3 class="place-heading">San Francisco</h3>
                 <p class="place-time">Sun 29 Nov 2016</p>
                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                <a href="#" class="place-buy-btn">Buy Tickets</a>
+                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
               </div>              
             </div>
             <div class="clear"></div>
@@ -134,9 +134,9 @@
         <div id="footer"></div>
       </div>
   </div>
- <div class="modal">
-        <div class="modal-container">
-          <div class="modal-close">
+ <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+          <div class="modal-close js-modal-close">
             <i class="ti-close"></i>
           </div>
           <header class="modal-header">
@@ -144,18 +144,18 @@
             Tickets
           </header>
           <div class="modal-body">
-           <label for="" class="modal-body">
+           <label for="ticket-quantity" class="modal-label">
              <i class="ti-shopping-cart"></i>
             Tickets, $15 per person
            </label>
-           <input type="text" class="modal-input" placeholder="How many?">
+           <input id="ticket-quantity" type="text" class="modal-input" placeholder="How many?">
 
-           <label for="" class="modal-body">
+           <label for="modal-email" class="modal-label">
             <i class="ti-user"></i>
             Send To
           </label>
-          <input type="text" class="modal-input" placeholder="Enter email...">
-          <button id="buy-ticket">
+          <input id="modal-email" type="text" class="modal-input" placeholder="Enter email...">
+          <button id="buy-tickets">
             Pay <i class="ti-check"></i>
           </button>
           </div>
@@ -164,5 +164,38 @@
           </footer>
         </div>
       </div>
+      <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket')
+        const modal = document.querySelector('.js-modal')
+        const modalClose = document.querySelector('.js-modal-close')
+        const modalContainer = document.querySelector('.js-modal-container')
+
+        // Hàm hiển thị modal mua vé (thêm class open vào modal)
+        function showBuyTickets(){
+            modal.classList.add('open')
+        }
+
+        // Gỡ bỏ modal mua vé (gỡ bỏ class open của modal)
+        function hideBuyTickets(){
+          modal.classList.remove('open')
+        }
+
+        // Lặp qua từng thẻ button và nghe hành vi click
+        for(const buyBtn of buyBtns){
+          buyBtn.addEventListener('click',showBuyTickets)
+        }
+
+        // Nghe hành vi click vào button close
+        modalClose.addEventListener('click',hideBuyTickets)
+
+        // Nghe hành vi click ở ngoài modal
+        modal.addEventListener('click',hideBuyTickets)
+
+        //Không close modal khi click vào phần modal-container
+        modalContainer.addEventListener('click',function(event){
+          event.stopPropagation()
+        })
+
+      </script>
 </body>
 </html>
