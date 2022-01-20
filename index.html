@@ -22,7 +22,7 @@
         <li><a href="#tour">Tour</a></li>
         <li><a href="#contact">Contact</a></li>
         <li>
-          <a href="">
+          <a href="# ">
             More
             <i class="nav-arrow-down ti-angle-down"></i>
           </a>
@@ -34,16 +34,16 @@
         </li>
       </ul>
       <!-- End: Nav -->
-      <!-- Begin: Search button -->
-      <div class="search-btn">
-        <i class="search-icon ti-search"></i>
-      </div>
 
-      <div class="mobile-menu-btn">
+        <!--  Mobile menu  button -->
+      <div id="mobile-menu" class="mobile-menu-btn">
         <i class="menu-icon ti-menu"></i>
       </div>
-
-      <!-- End: Search button -->
+      
+      <!--  Search button -->
+      <div class="search-btn">
+        <i class="search-icon ti-search"></i>
+      </div> 
     </div>
     <div id="slider">
       <div class="text-content">
@@ -110,9 +110,7 @@
                 <p class="place-desc">
                   Praesent tincidunt sed tellus ut rutrum sed vitae justo.
                 </p>
-                <button class="btn js-buy-ticket">
-                  Buy Tickets
-                </button>
+                <button class="btn js-buy-ticket">Buy Tickets</button>
               </div>
             </div>
             <div class="col col-third">
@@ -123,9 +121,7 @@
                 <p class="place-desc">
                   Praesent tincidunt sed tellus ut rutrum sed vitae justo.
                 </p>
-                <button class="btn js-buy-ticket">
-                  Buy Tickets
-                </button>
+                <button class="btn js-buy-ticket">Buy Tickets</button>
               </div>
             </div>
             <div class="col col-third">
@@ -136,9 +132,7 @@
                 <p class="place-desc">
                   Praesent tincidunt sed tellus ut rutrum sed vitae justo.
                 </p>
-                <button class="btn js-buy-ticket">
-                  Buy Tickets
-                </button>
+                <button class="btn js-buy-ticket">Buy Tickets</button>
               </div>
             </div>
           </div>
@@ -169,14 +163,14 @@
                   <input type="text" name="" placeholder="Message" required id="" class="form-control" />
                 </div>
               </div>
-              <input class="btn pull-right mt-16 " type="submit" value="SEND" />
+              <input class="btn pull-right mt-16" type="submit" value="SEND" />
             </form>
           </div>
         </div>
       </div>
       <!-- End: Contact section -->
       <div class="map-section">
-        <img src="./assets/img/map/map.jpg" alt="Map">
+        <img src="./assets/img/map/map.jpg" alt="Map" />
       </div>
 
       <div id="footer">
@@ -221,6 +215,36 @@
       </footer>
     </div>
   </div>
+  <script>
+    var header = document.getElementById("header");
+    var mobileMenu = document.getElementById("mobile-menu");
+    var headerHeight = header.clientHeight;
+
+    // Open, Close Menu
+    mobileMenu.onclick = function () {
+      var isClosed = header.clientHeight === headerHeight;
+      if (isClosed) {
+        header.style.height = "auto";
+      } else {
+        header.style.height = null;
+      }
+    };
+
+    //  Tự động đóng khi chọn menu
+    var menuItems = document.querySelectorAll(' #nav li a[href *="#" ] ');
+    for (var i = 0; i < menuItems.length; i++) {
+      var menuItem = menuItems[i];
+
+      menuItem.onclick = function (event) {
+        var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav');
+        if(isParentMenu){
+          event.prevenDefault();
+        } else {
+          header.style.height = null;
+        }
+      }
+    }
+  </script>
   <script>
     const buyBtns = document.querySelectorAll(".js-buy-ticket");
     const modal = document.querySelector(".js-modal");

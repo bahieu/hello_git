@@ -86,7 +86,6 @@ html {
   height: 46px;
   background-color: black;
   z-index: 1;
-  overflow: hidden;
 }
 #nav {
   display: inline-block;
@@ -141,6 +140,14 @@ html {
 #nav-arrow-down {
   font-size: 14px;
 }
+
+#header .mobile-menu-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
+
 #header .mobile-menu-btn,
 #header .search-btn {
   float: right;
